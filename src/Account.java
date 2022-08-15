@@ -1,6 +1,6 @@
 public class Account {
 
-    private static Double balance=0.00, deposit, withdraw;
+    private static Double balance=0.00, deposit, withdraw, investment, invested=0.00;
     private static String FirstName, LastName, closeOption, message;
 
     
@@ -61,6 +61,31 @@ public class Account {
     public static String getLastName() {
         return LastName;
     }
+    public static Double getInvestment() {
+        return investment;
+    }
+    public static void setInvestment(Double investment) {
+        Account.investment = investment;
 
+        if(investment<=balance){
+            invested=invested+investment;
+            balance=balance-investment;
+
+            System.out.println("==================================================");
+            System.out.println("Great! We allocate R$ "+investment+" to investments, your new balance is: R$ "+balance);
+            System.out.println("==================================================");
+        }else{
+            System.out.println("==================================================");
+            System.out.println("                    Invalid!");
+            System.out.println("==================================================");
+        }
+    }
+    public static Double getInvested() {
+        return invested;
+    }
+    public static void setInvested(Double invested) {
+        Account.invested = invested;
+    }
+    
     
 }
